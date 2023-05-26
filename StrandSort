@@ -1,0 +1,37 @@
+
+def strand_sort(arr):
+    if len(arr) <= 1:
+        return arr
+
+    sorted_arr = []
+    while len(arr) > 0:
+        sublist = [arr.pop(0)]
+        i = 0
+
+        while i < len(arr):
+            if arr[i] > sublist[-1]:
+                sublist.append(arr.pop(i))
+            else:
+                i += 1
+
+        sorted_arr = merge_strands(sorted_arr, sublist)
+
+    return sorted_arr
+
+
+def merge_strands(a, b):
+    if len(a) == 0:
+        return b
+    if len(b) == 0: 
+        return a
+
+    if a[0] < b[0]:
+        return [a[0]] + merge_strands(a[1:], b)
+    else:
+        return [b[0]] + merge_strands(a, b[1:])
+
+
+# Exemplo de uso:
+array = [9, 5, 2, 8, 1, 10, 4, 7, 3, 6]
+sorted_array = strand_sort(array)
+print(sorted_array)
