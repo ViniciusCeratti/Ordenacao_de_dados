@@ -1,0 +1,3 @@
+lista = [9, 5, 1, 8, 6, 2, 4, 7, 3]
+resultado = sorted(lista)
+print(resultado)
